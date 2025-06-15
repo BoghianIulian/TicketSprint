@@ -1,0 +1,50 @@
+INSTRUCTIUNI DE CONFIGURARE SI RULARE
+
+CE PRIMITI:
+- fisier .zip cu proiectul JetBrains Rider (.sln + foldere)
+- fisier TicketSprint.bak cu backup-ul bazei de date SQL Server
+- acest fisier instructiuni.txt
+
+1. INSTALARE NECESARA
+- instalati JetBrains Rider
+- instalati .NET 9.0.205 SDK:  https://dotnet.microsoft.com/en-us/download/dotnet/9.0
+- instalati Microsoft SQL Server:  https://www.microsoft.com/en-us/sql-server/sql-server-downloads
+- instalati SQL Server Management Studio (SSMS):  https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms
+
+
+2. RESTAURARE BAZA DE DATE
+- deschideti SSMS
+- conectati-va la localhost
+- click dreapta pe "Databases" > Restore Database...
+- Source: Device > selectati fisierul TicketSprint.bak primit
+- click OK (baza va fi restaurata)
+- pentru restaurarea corectă a bazei de date, este necesar SQL Server versiunea 16.0 (SQL Server 2022) sau mai nou.
+
+3. CONFIGURARE CONEXIUNE IN PROIECT
+- deschideti appsettings.json din proiect
+- verificati sau modificati ConnectionStrings
+
+Exemplu:
+"ConnectionStrings": {
+    "DefaultConnection": "Server=DESKTOP-XXXXXXX;Database=TicketSprint;Trusted_Connection=True;TrustServerCertificate=True;"
+  }
+
+4. DESCHIDERE PROIECT
+- deschideti JetBrains Rider/VS CODE
+- open > selectati folderul dezarhivat
+
+
+5. RULARE
+- rulati proiectul din JetBrains Rider sau VS Code, din terminal: 
+dotnet restore
+dotnet build
+dotnet run
+- dupa rulare, deschideti în browser adresa afisata în consola (ex: https://localhost:5001)
+- aplicatia se va conecta la baza de date si va porni
+
+6. CONTURI FOLOSITOARE:
+- admin: admin@example.com
+         admin4321
+- utilizator: iulianboghian29@gmail.com
+               iulianboss
+		  
