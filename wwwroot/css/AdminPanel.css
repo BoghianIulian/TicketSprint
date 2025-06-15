@@ -1,0 +1,124 @@
+﻿.admin-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+}
+
+.admin-section {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    border-left: 6px solid #3498db;
+    padding-left: 10px;
+    color: #34495e;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+}
+
+.admin-table th, .admin-table td {
+    padding: 0.75rem;
+    text-align: center;
+    border: 1px solid #dee2e6;
+    vertical-align: middle;
+}
+
+.admin-table th {
+    background-color: #f2f4f6;
+    font-weight: 600;
+}
+
+.participant-img, .event-img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 6px;
+    object-fit: contain;
+    background-color: #f8f9fa;
+    padding: 4px;
+    display: block;
+    margin: auto;
+}
+
+
+.legend-box {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    border-radius: 4px;
+}
+
+.legend-box.available {
+    background-color: #28a745;
+}
+.legend-box.occupied {
+    background-color: #6c757d;
+}
+.legend-box.unavailable {
+    background-color: #dc3545; 
+}
+
+.available { background-color: #28a745; }
+.occupied { background-color: #dc3545; }
+
+
+.seat-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    border: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #28a745;
+    cursor: default;
+}
+
+#seatMatrixWrapper {
+    max-height: 550px;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding: 1rem;
+    border-radius: 12px;
+    background: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+.seat-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.seat-row-label {
+    width: 32px;
+    text-align: right;
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.seat-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 4px;
+}
+
+.seat-button.occupied {
+    background-color: #6c757d;
+}
+
+.seat-button.unavailable {
+    background-color: #dc3545;
+    cursor: pointer;
+}

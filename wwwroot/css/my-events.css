@@ -1,0 +1,19 @@
+﻿.badge-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 260px; /* aproximativ 8 badge-uri */
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.badge-container::-webkit-scrollbar {
+    width: 6px;
+}
+.badge-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+.badge-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

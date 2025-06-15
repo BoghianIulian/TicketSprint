@@ -1,0 +1,70 @@
+﻿@page
+@model TicketSprint.Pages.CartModel
+@{
+    <meta charset="utf-8">
+    Layout = "_LayoutHome";
+    ViewData["Title"] = "Coșul de Bilete";
+}
+<section class="hero-section">
+    <div>
+        <h1>Cosul tau de bilete</h1>
+        <p>Verifică biletele alese și confirmă comanda</p>
+    </div>
+</section>
+
+<div class="container py-5">
+    <h2 class="mb-4 fw-bold text-center"></h2>
+
+    <div id="cartContainer" class="row row-cols-1 row-cols-md-2 g-4"></div>
+
+
+    <hr class="my-5" />
+
+    <div class="card p-4 shadow form-card">
+        <h4 class="fw-bold mb-3">Date pentru confirmarea comenzii</h4>
+        <form id="checkoutForm" class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Prenume</label>
+                <input type="text" id="firstName" name="firstName" class="form-control"
+                       value="@(ViewData["UserFirstName"] as string ?? string.Empty)" required />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Nume</label>
+                <input type="text" id="lastName" name="lastName" class="form-control"
+                       value="@(ViewData["UserLastName"] as string ?? string.Empty)" required />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-control"
+                       value="@(ViewData["UserEmail"] as string ?? string.Empty)" required />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Vârstă</label>
+                <input type="number" id="age" name="age" class="form-control"
+                       value="@(ViewData["UserAge"]?.ToString() ?? string.Empty)" min="1" required />
+            </div>
+
+
+            <div class="col-12 text-end">
+                <button type="submit" class="btn btn-success fw-bold px-4">Trimite comanda</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/cart.css" />
+    <link rel="stylesheet" href="~/css/toast.css" />
+    
+}
+
+@section Scripts {
+    <script src="~/js/cart.js"></script>
+    <script src="~/js/navbar.js"></script>
+    <script src="~/js/toast.js"></script>
+}

@@ -1,0 +1,44 @@
+﻿@page
+@model TicketSprint.Pages.LoginModel
+@{
+    <meta charset="utf-8">
+    Layout = "_Layout";
+    ViewData["Title"] = "Login";
+}
+
+<!-- HERO cu imaginea stadionului -->
+<section class="hero-section"></section>
+
+<!-- FORMULAR LOGIN -->
+<section class="login-area">
+    <div class="login-container">
+        <div class="card shadow">
+            <div class="text-center mb-4">
+                <img src="/images/logo.png" alt="TicketSprint Logo" style="height: 60px;" />
+                <h4 class="mt-2 text-danger">Autentificare</h4>
+            </div>
+
+            <form id="loginForm" onsubmit="return loginUser(event)">
+                <div class="mb-3 input-group">
+                    <i class="form-icon bi bi-envelope"></i>
+                    <input type="email" id="email" class="form-control" placeholder="Email" required />
+                </div>
+
+                <div class="mb-3 input-group">
+                    <i class="form-icon bi bi-lock"></i>
+                    <input type="password" id="password" class="form-control" placeholder="Parolă" required />
+                </div>
+
+                <button type="submit" class="btn btn-danger w-100" id="loginBtn">🔒 Login</button>
+            </form>
+
+            <div id="errorMessage" class="alert alert-danger mt-3 text-center" style="display:none;"></div>
+
+            <p class="text-center mt-3">
+                Nu ai cont? <a href="/Register" class="text-warning">Înregistrează-te</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<script src="/js/login.js"></script>

@@ -1,0 +1,28 @@
+﻿/* Navbar transparent, exact ca în login */
+.navbar-glass {
+    background: rgba(13, 27, 42, 0.85); /* aproape negru cu transparență */
+    backdrop-filter: blur(8px);         /* efect de sticlă */
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-glass .navbar-brand {
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.navbar-glass .nav-link {
+    color: white !important;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.navbar-glass .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+}
+
+

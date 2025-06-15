@@ -1,0 +1,21 @@
+﻿@model TicketSprint.DTOs.ParticipantDTO
+
+<div class="participant-card">
+    <img src="@(string.IsNullOrEmpty(Model.ImageUrl) ? "/images/default-team.jpg" : Model.ImageUrl)" alt="@Model.Name" />
+
+    <h5>@Model.Name</h5>
+    <p>@Model.SportType</p>
+
+    @if (ViewData["Action"]?.ToString() == "Delete")
+    {
+        <button class="btn btn-danger action-btn" onclick="deleteFavorite(@ViewData["FavoriteId"])">Șterge din favorite</button>
+    }
+    else if (ViewData["Action"]?.ToString() == "Add")
+    {
+        <button class="btn btn-outline-primary action-btn" onclick="addToFavorites(@Model.ParticipantId)">Adaugă la favorite</button>
+    }
+
+    <button class="btn btn-outline-secondary mt-2" onclick="showParticipantEvents(@Model.ParticipantId, '@Model.Name')">
+        Vezi evenimente
+    </button>
+</div>

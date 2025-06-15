@@ -1,0 +1,50 @@
+﻿@page
+@model TicketSprint.Pages.RegisterModel
+@{
+    <meta charset="utf-8">
+    Layout = "_Layout";
+    ViewData["Title"] = "Înregistrare";
+}
+
+<!-- HERO -->
+<section class="hero-section"></section>
+
+<!-- FORMULAR REGISTER -->
+<section class="login-area">
+    <div class="login-container">
+        <div class="card shadow">
+            <div class="text-center mb-4">
+                <img src="/images/logo.png" alt="TicketSprint Logo" style="height: 60px;" />
+                <h4 class="mt-2 text-danger">Înregistrare</h4>
+            </div>
+
+            <form id="registerForm">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="firstName" placeholder="Prenume" required />
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="lastName" placeholder="Nume" required />
+                </div>
+                <div class="mb-3">
+                    <input type="number" class="form-control" id="age" placeholder="Vârstă" required min="13" max="120" />
+                </div>
+                <div class="mb-3">
+                    <input type="email" class="form-control" id="email" placeholder="Email" required />
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" id="password" placeholder="Parolă (minim 6 caractere)" required minlength="6" />
+                </div>
+                <button type="submit" class="btn btn-danger w-100">📝 Creează cont</button>
+            </form>
+
+            <p class="text-center mt-3">
+                Ai deja cont? <a href="/Login" class="text-warning">Autentifică-te</a>
+            </p>
+
+            <div id="registerError" class="alert alert-danger mt-3 text-center" style="display:none;"></div>
+        </div>
+    </div>
+    
+
+</section>
+<script src="/js/register.js"></script>

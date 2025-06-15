@@ -1,0 +1,38 @@
+﻿@page
+@model TicketSprint.Pages.ScanModel
+@{
+    <meta charset="utf-8">
+    ViewData["Title"] = "Scanare bilet";
+}
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8" />
+    <title>Scanare bilet</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="bg-light">
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card shadow-lg p-5 w-100" style="max-width: 600px;">
+        <h2 class="fw-bold text-center text-primary mb-4">Verificare bilet</h2>
+
+        <div class="alert @(Model.Success ? "alert-success" : "alert-danger") text-center" role="alert">
+            <i class="bi @(Model.Success ? "bi-check-circle-fill" : "bi-exclamation-triangle-fill") me-2"></i>
+            <span style="font-size: 1.2rem;">@Model.StatusMessage</span>
+        </div>
+
+        
+    </div>
+</div>
+
+</body>
+</html>

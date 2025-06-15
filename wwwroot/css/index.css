@@ -1,0 +1,111 @@
+﻿/* ==== Separator vertical negru ==== */
+.container-fluid > .row {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+/* Sidebar (filtre) */
+.container-fluid > .row > aside {
+    background: linear-gradient(to bottom right, #dadada, #bdbdbd);
+
+    padding: 1.5rem;
+    margin-right: 1rem; /* mai apropiat */
+    position: sticky;
+    top: 6rem; /* sticky */
+    border-radius: 12px;
+    transition: box-shadow 0.3s;
+}
+.container-fluid > .row > aside:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.08);
+}
+
+/* Separator: linie verticală pe partea dreaptă a aside-ului */
+.container-fluid > .row > aside::after {
+    content: "";
+    position: absolute;
+    top: 1rem;
+    right: -1rem; /* mai în stânga */
+    height: calc(100% - 2rem);
+    width: 4px; /* mai groasă */
+    background-color: #000;
+}
+
+/* Zona cu card-uri */
+.container-fluid > .row > section {
+    flex: 1;
+    padding-left: 1rem;
+}
+
+/* ==== Accente vizuale ==== */
+/* Subtitlurile de secțiune primesc o bară decorativă */
+section h2 {
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+section h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 120px; /* mai lungă */
+    height: 4px;
+    background-color: #ffc107;
+    border-radius: 2px;
+}
+
+/* Titlu “Filtre” cu bară galbenă în stânga */
+aside h5 {
+    font-size: 1.4rem;
+    position: relative;
+}
+aside h5::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 20px;
+    background-color: #ffc107;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Label-urile și select-urile */
+aside strong,
+.form-check-label,
+.form-select {
+    font-size: 1.1rem;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* distanță între box și text */
+    margin-bottom: 0.5rem;
+}
+
+.form-check-input {
+    position: relative;
+    margin-top: 0;
+    margin-left: 0;
+    flex-shrink: 0;
+}
+
+.form-check-label {
+    margin: 0;
+}
+/* Checkbox galben personalizat */
+.form-check-input:checked {
+    background-color: #ffc107;   /* fundalul bifei */
+    border-color: #ffc107;       /* conturul când e bifat */
+}
+
+/* Select și checkbox – efect focus */
+.form-select:focus,
+.form-check-input:focus + .form-check-label {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.5);
+}
+
+/* Spațiu între carduri și footer */
+footer.footer {
+    margin-top: 3rem;
+}

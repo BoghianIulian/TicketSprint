@@ -1,0 +1,93 @@
+﻿@page
+@model TicketSprint.Pages.IndexModel
+@using TicketSprint.DTOs
+@{
+    <meta charset="utf-8">
+    Layout = "_LayoutHome";
+    ViewData["Title"] = "Acasă";
+}
+
+<!-- HERO -->
+<section class="hero-section">
+    <div>
+        <h1>Cumpără bilete pentru meciurile tale preferate</h1>
+        <p>Fii aproape de acțiune! Alege un sport, un eveniment și cumpără bilete cu un singur click.</p>
+    </div>
+</section>
+
+<!-- CONȚINUT -->
+<div class="container-fluid py-5">
+    <div class="row justify-content-between">
+
+        <!-- FILTRE -->
+        <aside class="col-lg-3 mb-4">
+            <h5 class="fw-bold mb-3">Filtre</h5>
+
+            <div class="mb-3">
+                <strong>Sporturi</strong>
+                <div id="filter-sports"></div>
+            </div>
+
+
+            <div class="mb-3">
+                <strong>Oraș</strong>
+                <select class="form-select" id="filter-cities"></select>
+            </div>
+
+            <div class="mb-3">
+                <strong>Locație</strong>
+                <select class="form-select" id="filter-locations"></select>
+            </div>
+
+            <div class="mb-3">
+                <strong>Dată început</strong>
+                <input type="date" id="filter-start-date" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <strong>Dată sfârșit</strong>
+                <input type="date" id="filter-end-date" class="form-control" />
+            </div>
+
+
+        </aside>
+
+        
+
+
+        <!-- EVENIMENTE -->
+        <section class="col-lg-9">
+
+            <div id="suggested-events-wrapper">
+                <div id="suggested-events"></div>
+            </div>
+
+            <!-- <hr class="my-5" />
+            <h2 class="fw-bold mb-4">Rezultate filtrate</h2>
+            <div class="row g-4 mb-5" id="events-container">
+                Aici JS-ul va injecta rezultatele 
+            </div>
+            -->
+
+            <h2 class="fw-bold mb-4" id="events-title">Evenimente</h2>
+
+            <div class="row g-4 mb-5" id="events-container">
+                <!-- JS-ul va popula toate evenimentele de la început și după filtrare -->
+            </div>
+
+        </section> 
+    </div>
+</div>
+
+
+@section Styles {
+    <link rel="stylesheet" href="/css/index.css" />
+    <link href="~/css/details.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/event-card.css" />
+    
+}
+@section Scripts {
+    <script src="~/js/home.js"></script>
+    <script src="~/js/navbar.js"></script>
+
+}

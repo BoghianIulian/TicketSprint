@@ -1,0 +1,62 @@
+﻿/* === Event Info Card (stânga) === */
+.event-info-card {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.event-info-card h5 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #222;
+}
+
+.event-info-card p {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.event-info-card .badge {
+    font-size: 0.85rem;
+    padding: 0.4em 0.75em;
+}
+
+/* === Descriere formatată frumos === */
+.event-description {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    font-size: 1.05rem;
+    color: #444;
+    line-height: 1.7;
+}
+.event-description br {
+    margin-bottom: 0.5rem;
+}
+
+/* === Spațiere generală === */
+section {
+    margin-bottom: 2rem;
+}
+
+.favorite-icon:hover {
+    transform: scale(1.2);
+    transition: transform 0.2s ease;
+}
+
+.event-info-card img {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+
+
+

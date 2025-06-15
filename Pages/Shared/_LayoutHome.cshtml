@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - TicketSprint</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    
+
+    <link rel="stylesheet" href="/css/home.css" />
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    @RenderSection("Styles", required: false)
+</head>
+<body class="bg-white" data-user-logged-in="@User.Identity.IsAuthenticated.ToString().ToLower()">
+
+@{
+    bool isAuthenticated = User.Identity.IsAuthenticated;
+    var userRole = User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.Role)?.Value;
+    bool isAdmin = userRole == "administrator";
+}
+
+
+<!-- NAVBAR PUBLIC -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 fixed-top shadow">
+    <a class="navbar-brand d-flex align-items-center" href="/@(isAdmin ? "Admin/AdminPanel" : "Index")">
+        <img src="/images/logo.png" alt="TicketSprint Logo" style="height: 40px; margin-right: 10px;" />
+        <span class="fw-bold">TicketSprint</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            @if (isAdmin)
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#createAdminModal">
+                         Creează administrator
+                    </a>
+                </li>            }
+            else if (isAuthenticated)
+            {
+                <li class="nav-item"><a class="nav-link" href="/Favorites">Favorite</a></li>
+                <li class="nav-item"><a class="nav-link" href="/Cart">Coș bilete</a></li>
+                <li class="nav-item"><a class="nav-link" href="/MyEvents">Evenimentele mele</a></li>
+            }
+            else
+            {
+                <li class="nav-item"><a class="nav-link" href="/Cart">Coș bilete</a></li>
+            }
+        </ul>
+
+        <ul class="navbar-nav">
+            @if (isAuthenticated)
+            {
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);" onclick="openProfile()">Profilul meu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);" onclick="logoutUser()">Logout</a>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item"><a class="nav-link" href="/Login">Logare</a></li>
+                <li class="nav-item"><a class="nav-link" href="/Register">Înregistrare</a></li>
+            }
+        </ul>
+    </div>
+</nav>
+
+
+
+<!-- PROFIL POPUP -->
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="profileModalLabel">Profilul meu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="profileForm">
+                    <div class="mb-3">
+                        <label class="form-label">Prenume</label>
+                        <input type="text" class="form-control" id="firstName" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nume</label>
+                        <input type="text" class="form-control" id="lastName" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" required disabled />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Vârstă</label>
+                        <input type="number" class="form-control" id="age" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" onclick="updateProfile()">Modifică</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SPAȚIU PENTRU CONȚINUT -->
+<main class="pt-5" style="min-height: 100vh; background-color: #ffffff;">
+    @RenderBody()
+</main>
+
+<!-- FOOTER -->
+<footer class="footer text-center text-white bg-dark py-3">
+    &copy; 2025 TicketSprint. Toate drepturile rezervate.
+</footer>
+
+<script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+@RenderSection("Scripts", required: false)
+</body>
+</html>

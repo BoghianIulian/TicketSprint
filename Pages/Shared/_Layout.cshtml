@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - TicketSprint</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+</head>
+<body>
+
+<!-- NAVBAR GLOBAL -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 fixed-top shadow">
+
+    <a class="navbar-brand d-flex align-items-center" href="/">
+        <img src="/images/logo.png" alt="TicketSprint Logo" style="height: 40px; margin-right: 10px;" />
+        <span class="fw-bold">TicketSprint</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="/">Acasă</a></li>
+            <li class="nav-item"><a class="nav-link" href="/Cart">Coș bilete</a></li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="/Login">Logare</a></li>
+            <li class="nav-item"><a class="nav-link" href="/Register">Înregistrare</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- CONȚINUT PAGINĂ -->
+<main role="main" class="p-0 m-0" style="background: #0d1b2a;">
+    @RenderBody()
+</main>
+
+
+<!-- FOOTER GLOBAL -->
+<footer class="footer text-center text-white bg-dark mt-5 py-3">
+    &copy; 2025 TicketSprint. Toate drepturile rezervate.
+</footer>
+
+<script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

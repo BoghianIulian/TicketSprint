@@ -1,0 +1,133 @@
+﻿/* Container general */
+#seatMatrixWrapper {
+    max-height: 550px;
+    overflow-y: auto;
+    padding: 1rem;
+    border-radius: 12px;
+    background: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+/* Linie pentru un rând */
+.seat-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+/* Număr rând */
+.seat-row-label {
+    width: 32px;
+    text-align: right;
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+/* Container locuri */
+.seat-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+/* Buton loc */
+.seat-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    border: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #28a745; 
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.seat-button:hover {
+    transform: scale(1.1);
+}
+
+/* Ocupat */
+.seat-button.occupied {
+    background-color: #888;
+    cursor: not-allowed;
+}
+
+/* Selectat */
+.seat-button.selected {
+    background-color: #ff9800;
+}
+
+.seat-button.in-cart {
+    background-color: #0d6efd; /* albastru închis */
+    color: white;
+    cursor: not-allowed;
+}
+
+/* Titlu deasupra */
+.seat-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1rem;
+}
+
+.seat-price {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #444;
+}
+
+
+/* === LEGENDĂ === */
+.legend {
+    font-size: 0.9rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.legend-box {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    border-radius: 4px;
+}
+
+.legend-box.available {
+    background-color: #28a745; 
+}
+.legend-box.occupied {
+    background-color: #6c757d; 
+}
+.legend-box.selected {
+    background-color: #ff9800; 
+}
+.legend-box.in-cart { background-color: #0d6efd; }
+
+.available {
+    background-color: #28a745;
+    color: white;
+}
+
+.occupied {
+    background-color: #6c757d;
+    color: white;
+    cursor: not-allowed;
+}
+
+.in-cart {
+    background-color: #0d6efd;
+    color: white;
+    cursor: not-allowed;
+}
+

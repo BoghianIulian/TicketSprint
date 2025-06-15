@@ -1,0 +1,128 @@
+﻿@page
+@model TicketSprint.Pages.FavoritesModel
+@{
+    <meta charset="utf-8">
+    Layout = "_LayoutHome";
+    ViewData["Title"] = "Favorite";
+}
+
+<section class="hero-section">
+    <div>
+        <h1>Cumpără bilete pentru meciurile tale preferate</h1>
+        <p>Fii aproape de acțiune! Alege un sport, un eveniment și cumpără bilete cu un singur click.</p>
+    </div>
+</section>
+
+<!-- FAVORITELE UTILIZATORULUI -->
+<section class="container-fluid py-5">
+    <h2 class="fw-bold mb-4">Echipele tale favorite</h2>
+
+    @if (!Model.GroupedFavorites.Any())
+    {
+        <p class="text-muted">Nu ai echipe adăugate la favorite.</p>
+    }
+
+    @foreach (var sport in Model.GroupedFavorites.Keys)
+    {
+        <h3 class="fw-bold mt-5">@sport</h3>
+        <div class="row g-4 mb-4">
+            @if (Model.GroupedFavorites[sport].Any())
+            {
+                @foreach (var fav in Model.GroupedFavorites[sport])
+                {
+                    <div class="col-md-6 col-lg-4">
+                        @await Html.PartialAsync("Shared/_ParticipantCard",
+                            new TicketSprint.DTOs.ParticipantDTO {
+                                ParticipantId = fav.ParticipantId,
+                                Name = fav.ParticipantName,
+                                SportType = fav.SportType,
+                                ImageUrl = fav.ImageUrl
+                            },
+                            new ViewDataDictionary(ViewData)
+                            {
+                                { "Action", "Delete" },
+                                { "FavoriteId", fav.FavoriteId } // 🔥 trimitem și FavoriteId separat
+                            })
+
+                        
+
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="text-muted">Nu ai favorite la acest sport.</p>
+            }
+        </div>
+    }
+</section>
+
+<!-- SUGESTII PENTRU TINE -->
+@if (Model.GroupedFrequentSuggestions.Any())
+{
+    <section class="container-fluid py-5 bg-light">
+        <h2 class="fw-bold mb-4">Sugestii pentru tine</h2>
+
+        @foreach (var sport in Model.GroupedFrequentSuggestions.Keys)
+        {
+            <h3 class="fw-bold mt-5">@sport</h3>
+            <div class="row g-4 mb-4">
+                @foreach (var p in Model.GroupedFrequentSuggestions[sport])
+                {
+                    <div class="col-md-6 col-lg-4">
+                        @await Html.PartialAsync("Shared/_ParticipantCard", p, new ViewDataDictionary(ViewData) { { "Action", "Add" } })
+                    </div>
+                }
+            </div>
+        }
+    </section>
+}
+
+<!-- ALTE SUGESTII -->
+@if (Model.GroupedOtherSuggestions.Any())
+{
+    <section class="container-fluid py-5">
+        <h2 class="fw-bold mb-4">Alte sugestii</h2>
+
+        @foreach (var sport in Model.GroupedOtherSuggestions.Keys)
+        {
+            <h3 class="fw-bold mt-5">@sport</h3>
+            <div class="row g-4 mb-4">
+                @foreach (var p in Model.GroupedOtherSuggestions[sport])
+                {
+                    <div class="col-md-6 col-lg-4">
+                        @await Html.PartialAsync("Shared/_ParticipantCard", p, new ViewDataDictionary(ViewData) { { "Action", "Add" } })
+                    </div>
+                }
+            </div>
+        }
+    </section>
+}
+
+
+<div class="modal fade" id="participantEventsModal" tabindex="-1" aria-labelledby="participantEventsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="participantEventsModalLabel">Evenimentele echipei</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Închide"></button>
+            </div>
+            <div class="modal-body">
+                <div id="participantEventsContainer" class="row g-4"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/favorites.css" />
+    
+}
+
+@section Scripts {
+    
+    <script src="~/js/favorites.js"></script>
+    <script src="~/js/navbar.js"></script>
+
+}

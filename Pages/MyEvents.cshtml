@@ -1,0 +1,55 @@
+﻿@page
+@model TicketSprint.Pages.MyEventsModel
+@{
+    <meta charset="utf-8">
+    Layout = "_LayoutHome";
+    ViewData["Title"] = "Evenimentele Mele";
+}
+
+<!-- HERO SECTION -->
+<div class="hero-section text-center text-white py-5" style="background-color: #0d1b2a;">
+    <h1 class="display-4">Evenimentele Mele</h1>
+    <p class="lead">Aici găsești toate biletele achiziționate de tine</p>
+</div>
+
+<div class="container py-5">
+    <h3 class="mb-4">Evenimente viitoare</h3>
+    <div id="upcomingEvents" class="row g-4"></div>
+
+    <hr class="my-5" />
+
+    <h3 class="mb-4">Evenimente trecute</h3>
+    <div id="pastEvents" class="row g-4"></div>
+</div>
+
+
+<div class="modal fade" id="cancelTicketsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Selectează biletele de anulat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="cancelTicketsForm" class="d-flex flex-column gap-2"></form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Închide</button>
+                <button class="btn btn-danger" onclick="submitCancelTickets()">Anulează biletele selectate</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/my-events.css" />
+    <link rel="stylesheet" href="~/css/toast.css" />
+
+}
+
+@section Scripts {
+    <script src="~/js/my-events.js"></script>
+    <script src="~/js/navbar.js"></script>
+    <script src="~/js/toast.js"></script>
+}

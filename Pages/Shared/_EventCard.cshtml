@@ -1,0 +1,15 @@
+﻿@model TicketSprint.DTOs.EventDTO
+
+<div class="col-md-6 col-lg-4">
+    <div class="card event-card h-100">
+        <img src="@(string.IsNullOrEmpty(Model.ImageUrl) ? "/images/default-event.jpg" : Model.ImageUrl)" class="card-img-top" alt="Imagine eveniment">
+        <div class="card-body d-flex flex-column">
+            <h5 class="card-title">@Model.Participant1Name vs @Model.Participant2Name</h5>
+            <p class="text-muted mb-1">@Model.EventDate.ToString("dd MMMM yyyy")</p>
+            <p class="text-secondary mb-3">@Model.LocationName</p>
+            <a href="/Event/Details/@Model.EventId" class="btn btn-warning mt-auto w-100">Detalii</a>
+        </div>
+    </div>
+</div>
+
+

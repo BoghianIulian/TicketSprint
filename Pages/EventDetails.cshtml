@@ -1,0 +1,155 @@
+﻿@page "/Event/Details/{id:int}"
+@model TicketSprint.Pages.EventDetailsModel
+
+@{
+    <meta charset="utf-8">
+    Layout = "_LayoutHome";
+    ViewData["Title"] = "Detalii Eveniment";
+}
+
+@section Styles {
+    
+    <link href="~/css/details.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/event-card.css" />
+    <link rel="stylesheet" href="/css/toast.css" />
+    
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/js/navbar.js"></script>
+    <script src="~/js/toast.js"></script>
+    <script src="~/js/details.js"></script>
+}
+
+<div class="hero-section text-center text-white py-5" style="background-color: #0d1b2a;">
+    <h1 class="display-4">@Model.Event.EventName</h1>
+    <p class="lead">@Model.Event.EventDate.ToString("dd MMMM yyyy") • @Model.Event.LocationName</p>
+</div>
+
+<div class="container py-5">
+
+    <!-- Participanți -->x
+    <div class="row mb-4 text-center align-items-center">
+        <!-- Participant 1 -->
+        <div class="col-md-6 d-flex flex-column align-items-center">
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-star text-warning favorite-icon"
+                   data-participant-id="@Model.Event.Participant1Id"
+                   style="cursor: pointer; font-size: 1.6rem;"
+                   title="Adaugă la favorite"></i>
+
+                <img src="@(string.IsNullOrEmpty(Model.Event.Participant1Image) ? "/images/default-team.jpg" : Model.Event.Participant1Image)"
+                     class="img-fluid participant-img mb-2"
+                     alt="@Model.Event.Participant1Name"
+                     style="max-height: 120px;" />
+            </div>
+            <h3 class="fw-bold mt-2">@Model.Event.Participant1Name</h3>
+        </div>
+
+        <!-- Participant 2 -->
+        <div class="col-md-6 d-flex flex-column align-items-center">
+            <div class="d-flex align-items-center gap-2">
+                <img src="@(string.IsNullOrEmpty(Model.Event.Participant2Image) ? "/images/default-team.jpg" : Model.Event.Participant2Image)"
+                     class="img-fluid participant-img mb-2"
+                     alt="@Model.Event.Participant2Name"
+                     style="max-height: 120px;" />
+
+                <i class="bi bi-star text-warning favorite-icon"
+                   data-participant-id="@Model.Event.Participant2Id"
+                   style="cursor: pointer; font-size: 1.6rem;"
+                   title="Adaugă la favorite"></i>
+            </div>
+            <h3 class="fw-bold mt-2">@Model.Event.Participant2Name</h3>
+        </div>
+    </div>
+
+
+    <!-- Descriere + info -->
+    <div class="row">
+        <!-- Col stânga: info eveniment -->
+        <div class="col-lg-4 mb-4">
+            <div class="event-info-card">
+                <img src="@(string.IsNullOrEmpty(Model.Event.ImageUrl) ? "/images/default-event.jpg" : Model.Event.ImageUrl)"
+                     alt="@Model.Event.EventName"
+                     class="img-fluid rounded mb-3" />
+                <h5 class="fw-bold">@Model.Event.EventName</h5>
+                <p class="small text-muted mb-1">
+                    <i class="bi bi-calendar-event me-1"></i>
+                    @Model.Event.EventDate.ToString("dd MMMM yyyy, HH:mm")
+                </p>
+                <p class="small text-muted">
+                    <i class="bi bi-geo-alt me-1"></i>
+                    @Model.Event.LocationName
+                </p>
+                <p class="badge bg-secondary">@Model.Event.SportType</p>
+
+                <!-- Buton cumpărare bilete -->
+                <a class="btn btn-warning w-100 mt-3 fw-bold"
+                   href="/Buy/@Model.Event.EventId">
+                    Cumpără bilete
+                </a>
+            </div>
+        </div>
+
+        <!-- Col dreapta: descriere -->
+        <div class="col-lg-8 mb-4">
+            <h4 class="fw-bold">Descriere Eveniment</h4>
+            <div class="event-description">
+                @Html.Raw(Model.Event.Description?.Replace("\n", "<br />"))
+            </div>
+        </div>
+    </div>
+
+
+    <section class="container-fluid mt-5 similar-events">
+
+    <h2 class="fw-bold mb-4">Evenimente similare</h2>
+
+        @if (Model.RelatedEvents?.Any() == true)
+        {
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mb-5">
+                @foreach (var ev in Model.RelatedEvents)
+                {
+                    <div class="col">
+                        <div class="col">
+                            <div class="event-info-card h-100 d-flex flex-column text-center">
+                                <img src="@(string.IsNullOrEmpty(ev.ImageUrl) ? "/images/default-event.jpg" : ev.ImageUrl)"
+                                     alt="@ev.EventName"
+                                     class="img-fluid rounded mb-3" />
+
+                                <h5 class="fw-bold">@ev.Participant1Name vs @ev.Participant2Name</h5>
+
+                                <p class="small text-muted mb-1">
+                                    <i class="bi bi-calendar-event me-1"></i>
+                                    @ev.EventDate.ToString("dd MMMM yyyy, HH:mm")
+                                </p>
+
+                                <p class="small text-muted">
+                                    <i class="bi bi-geo-alt me-1"></i>
+                                    @ev.LocationName
+                                </p>
+
+                                
+
+                                <a class="btn btn-warning mt-3 fw-bold w-100" href="/Event/Details/@ev.EventId">
+                                    Detalii
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-muted">Nu există evenimente similare momentan.</p>
+        }
+    </section>
+
+
+
+
+
+</div>
