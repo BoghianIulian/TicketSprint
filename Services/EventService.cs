@@ -124,7 +124,7 @@ public class EventService : IEventService
         if (conflict)
             throw new Exception("Există deja un eveniment în această locație în ziua selectată.");
 
-        // 🖼 Salvare imagine
+        //  Salvare imagine
         string? imagePath = null;
         if (dto.ImageUrl != null && dto.ImageUrl.Length > 0)
         {

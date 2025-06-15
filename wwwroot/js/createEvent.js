@@ -372,6 +372,7 @@ async function submitEditEvent(id) {
             formData.append("EventDate", corrected.toISOString());
 
         // Adaugă valorile read-only necesare
+        formData.append("ImageUrl", image);
         formData.append("SportType", document.getElementById("event-sport").value);
         formData.append("Participant1Name", document.getElementById("participant-1").value);
         formData.append("Participant2Name", document.getElementById("participant-2").value);

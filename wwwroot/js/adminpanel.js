@@ -368,8 +368,8 @@ function openCreateParticipantModal() {
     const form = document.getElementById("createParticipantForm");
     form.reset(); 
 
-    document.getElementById("participantId").value = "";        // ❗ hidden input NU se resetează
-    document.getElementById("sportType").disabled = false;      // ❗ îl reactivăm dacă a fost dezactivat la editare
+    document.getElementById("participantId").value = "";        
+    document.getElementById("sportType").disabled = false;      
 
     document.getElementById("imagePreview").src = "";
     document.getElementById("imagePreview").classList.add("d-none");
